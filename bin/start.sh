@@ -1,21 +1,15 @@
 #!/bin/bash
 
-
-directory_empty() {
-    [ -z "$(ls -A "$1/")" ]
-}
-
-
 if [ ! -d "/opt/davinci" ]; then
     cp -a /usr/src/davinci /opt/
 fi
-if [ directory_empty "/opt/davinci" ]; then
+if [ -z "$(ls -A "/opt/davinci/")" ]; then
     cp -a /usr/src/davinci/* /opt/davinci/
 fi
 if [ ! -f "/initdb/davinci.sql" ]; then
     cat /usr/src/davinci/bin/davinci.sql > /initdb/davinci.sql
     sed -i '1i\SET GLOBAL log_bin_trust_function_creators = 1;' /initdb/davinci.sql
-
+fi
 
 set -e
 host="$1"
