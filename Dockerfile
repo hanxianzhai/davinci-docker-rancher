@@ -10,7 +10,7 @@ RUN cd / \
 
 RUN mkdir -p /opt/phantomjs-2.1.1 \
     && wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 \
-	&& tar -xvzf phantomjs-2.1.1-linux-x86_64.tar.bz2 \
+	&& tar -xvjpf phantomjs-2.1.1-linux-x86_64.tar.bz2 \
 	&& rm -rf phantomjs-2.1.1-linux-x86_64.tar.bz2 \
 	&& mv phantomjs-2.1.1-linux-x86_64/bin/phantomjs /opt/phantomjs-2.1.1/phantomjs \
 	&& rm -rf phantomjs-2.1.1-linux-x86_64
