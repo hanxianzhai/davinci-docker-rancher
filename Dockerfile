@@ -16,7 +16,7 @@ RUN mkdir -p /opt/phantomjs-2.1.1 \
 	&& rm -rf phantomjs-2.1.1-linux-x86_64
 
 
-ADD bin/start.sh /opt/davinci/bin/start.sh
+ADD bin/start.sh /usr/src/davinci/bin/start.sh
 ADD config/application.yml /usr/src/davinci/config/application.yml
 
 RUN chmod +x /opt/phantomjs-2.1.1/phantomjs && chmod +x /usr/src/davinci/bin/start.sh
