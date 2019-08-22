@@ -24,8 +24,8 @@ server:
   # Userd for mail and download services, can be empty, careful configuration
   # By default, 'server.address' and 'server.port' is used as the string value.
   access:
-    address: bi.itop.vip
-    port: 80
+    address: ${REAL_URL:0.0.0.0}
+    port: ${REAL_PORT:80}
 
 
 ## jwt is one of the important configuration of the application
