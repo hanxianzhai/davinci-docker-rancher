@@ -18,7 +18,7 @@ RUN mkdir -p /opt/phantomjs-2.1.1 \
 
 
 ADD config/application.yml /usr/src/davinci/config/application.yml
-COPY entrypoint.sh /usr/local/bin/
+COPY bin/start.sh /usr/local/bin/
 
 
 RUN chmod +x /opt/phantomjs-2.1.1/phantomjs &&  chmod +x /usr/local/bin/start-server.sh
@@ -29,7 +29,6 @@ ENV PHANTOMJS_HOME /opt/phantomjs-2.1.1
 
 WORKDIR /opt/davinci
 
-ENTRYPOINT ["entrypoint.sh"]
-CMD ["mysql:3306","--","start-server.sh"]
+CMD ["start-server.sh"]
 
 EXPOSE 8080
