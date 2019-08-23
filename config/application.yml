@@ -73,11 +73,11 @@ spring:
   ## redis config
   ## please choose either of the two ways
   redis:
-    isEnable: false
+    isEnable: ${REDIS_RDADY:false}
 
   ## standalone config
-    host: 127.0.0.1
-    port: 6379
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
 
   ## cluster config
   #  cluster:

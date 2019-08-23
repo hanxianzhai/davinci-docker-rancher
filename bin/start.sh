@@ -11,6 +11,7 @@ if [ ! -f "/initdb/davinci.sql" ]; then
     sed -i '1i\SET GLOBAL log_bin_trust_function_creators = 1;' /initdb/davinci.sql
 fi
 
+cd /opt/davinci/bin/
 set -e
 host="$1"
 shift
