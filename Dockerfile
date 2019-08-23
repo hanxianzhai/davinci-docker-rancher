@@ -21,7 +21,7 @@ ADD config/application.yml /usr/src/davinci/config/application.yml
 COPY bin/start.sh /usr/local/bin/
 
 
-RUN chmod +x /opt/phantomjs-2.1.1/phantomjs &&  chmod +x /usr/local/bin/start-server.sh
+RUN chmod +x /opt/phantomjs-2.1.1/phantomjs &&  chmod +x /usr/local/bin/start-server.sh && chmod +x /usr/local/bin/start.sh
 
 
 ENV DAVINCI3_HOME /opt/davinci
