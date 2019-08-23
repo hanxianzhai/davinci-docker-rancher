@@ -29,6 +29,6 @@ ENV PHANTOMJS_HOME /opt/phantomjs-2.1.1
 WORKDIR /opt/davinci
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["start-server.sh"]
+CMD ["mysql:3306","--","start-server.sh"]
 
 EXPOSE 8080
