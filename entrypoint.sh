@@ -6,7 +6,10 @@ fi
 if [ -z "$(ls -A "/opt/davinci/")" ]; then
     cp -a /usr/src/davinci/* /opt/davinci/
 fi
-if [ ! -f "/initdb/davinci.sql" ]; then
+if [ -d "/initdb" ]; then
+    mkdir -p /initdb
+
+elif [ ! -f "/initdb/davinci.sql" ]; then
     cat /usr/src/davinci/bin/davinci.sql > /initdb/davinci.sql
     sed -i '1i\SET GLOBAL log_bin_trust_function_creators = 1;' /initdb/davinci.sql
 fi
