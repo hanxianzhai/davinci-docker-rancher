@@ -73,7 +73,7 @@ spring:
   ## redis config
   ## please choose either of the two ways
   redis:
-    isEnable: ${REDIS_RDADY:false}
+    isEnable: ${REDIS_READY:false}
 
   ## standalone config
     host: ${REDIS_HOST:127.0.0.1}
