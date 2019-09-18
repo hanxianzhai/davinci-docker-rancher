@@ -4,9 +4,9 @@ LABEL MAINTAINER="hanxianzhai@163.com"
 
 RUN cd / \
 	&& mkdir -p /usr/src/davinci \
-	&& wget https://github.com/edp963/davinci/releases/download/v0.3.0-beta.7/davinci-assembly_3.0.1-0.3.1-SNAPSHOT-dist-beta.7.zip \
-	&& unzip davinci-assembly_3.0.1-0.3.1-SNAPSHOT-dist-beta.7.zip -d /usr/src/davinci \
-	&& rm -rf davinci-assembly_3.0.1-0.3.1-SNAPSHOT-dist-beta.7.zip \
+	&& wget https://github.com/hanxianzhai/davinci-bin/releases/download/beta.7/davinci-bin.zip \
+	&& unzip davinci-bin.zip -d /usr/src/davinci \
+	&& rm -rf davinci-bin.zip \
 	&& cp /usr/src/davinci/bin/start-server.sh /usr/local/bin/
 
 RUN mkdir -p /opt/phantomjs-2.1.1 \
