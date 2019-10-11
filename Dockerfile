@@ -18,6 +18,7 @@ RUN mkdir -p /opt/phantomjs-2.1.1 \
 
 
 ADD config/application.yml /usr/src/davinci/config/application.yml
+ADD config/datasource_driver.yml /usr/src/davinci/config/datasource_driver.yml
 COPY bin/start.sh /usr/local/bin/
 
 
