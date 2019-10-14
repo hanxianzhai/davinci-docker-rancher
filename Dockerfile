@@ -26,6 +26,7 @@ RUN chmod +x /opt/phantomjs-2.1.1/phantomjs &&  chmod +x /usr/local/bin/start-se
 
 
 ENV DAVINCI3_HOME /opt/davinci
+
 ENV PHANTOMJS_HOME /opt/phantomjs-2.1.1
 
 WORKDIR /opt/davinci
