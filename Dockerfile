@@ -21,12 +21,9 @@ ADD config/application.yml /usr/src/davinci/config/application.yml
 #ADD config/datasource_driver.yml /usr/src/davinci/config/datasource_driver.yml
 COPY bin/start.sh /usr/local/bin/
 
-
 RUN chmod +x /opt/phantomjs-2.1.1/phantomjs &&  chmod +x /usr/local/bin/start-server.sh && chmod +x /usr/local/bin/start.sh
 
-
 ENV DAVINCI3_HOME /opt/davinci
-
 ENV PHANTOMJS_HOME /opt/phantomjs-2.1.1
 
 WORKDIR /opt/davinci
