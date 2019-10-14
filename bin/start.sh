@@ -13,6 +13,8 @@ elif [ ! -f "/initdb/davinci.sql" ]; then
     sed -i '1i\SET GLOBAL log_bin_trust_function_creators = 1;' /initdb/davinci.sql
 fi
 
+wget -P /usr/src/davinci/config/ 
+
 set -e
 host="$1"
 shift
