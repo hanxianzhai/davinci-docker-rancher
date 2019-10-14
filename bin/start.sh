@@ -1,10 +1,16 @@
 #!/bin/bash
 
+:<<!
 if [ ! -d "/opt/davinci" ]; then
     cp -a /usr/src/davinci /opt/
 fi
 if [ -z "$(ls -A "/opt/davinci/")" ]; then
     cp -a /usr/src/davinci/* /opt/davinci/
+fi
+!
+if [ -d "/opt/davinci" ]; then
+    rm -rf /opt/davinci
+    cp -a /usr/src/davinci /opt/
 fi
 if [ ! -d "/initdb" ]; then
     mkdir -p /initdb
