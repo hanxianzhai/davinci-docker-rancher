@@ -20,6 +20,10 @@ RUN mkdir -p /opt/phantomjs-2.1.1 \
 ADD config/application.yml /usr/src/davinci/config/application.yml
 #ADD config/datasource_driver.yml /usr/src/davinci/config/datasource_driver.yml
 COPY bin/start.sh /usr/local/bin/
+COPY bin/start.sh /usr/local/bin/
+COPY lib/oracle-11g/* /usr/src/davinci/lib/
+COPY lib/sqlserver/sqljdbc_6.0/chs/jre8/* /usr/src/davinci/lib/
+COPY lib/sqlserver/sqljdbc_7.4/chs/mssql-jdbc-* /usr/src/davinci/lib/
 
 RUN chmod +x /opt/phantomjs-2.1.1/phantomjs &&  chmod +x /usr/local/bin/start-server.sh && chmod +x /usr/local/bin/start.sh
 
@@ -28,6 +32,6 @@ ENV PHANTOMJS_HOME /opt/phantomjs-2.1.1
 
 WORKDIR /opt/davinci
 
-CMD ["start-server.sh"]
-
 EXPOSE 8080
+
+CMD ["start-server.sh"]
