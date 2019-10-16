@@ -13,18 +13,22 @@ if [ "`ls -A $DIRECTORY`" = "" ]; then
     cp -a /usr/src/davinci/* /opt/davinci/
 fi
 !
-if [ ! -d "/initdb" ]; then
+if [ -d "/initdb" ]; then
+    rm -rf /initdb/*
+elif [ ! -d "/initdb" ]; then
     mkdir -p /initdb
-elif [ ! -f "/initdb/davinci.sql" ]; then
-    cat /usr/src/davinci/bin/davinci.sql > /initdb/davinci.sql
-    sed -i '1i\SET GLOBAL log_bin_trust_function_creators = 1;' /initdb/davinci.sql
 fi
+
+cat /usr/src/davinci/bin/davinci.sql > /initdb/davinci.sql
+sed -i '1i\SET GLOBAL log_bin_trust_function_creators = 1;' /initdb/davinci.sql
+
 if [ ! -d "/opt/davinci" ]; then
     cp -a /usr/src/davinci /opt/
 else 
     rm -rf /opt/davinci/*
     cp -a /usr/src/davinci/* /opt/davinci/
 fi
+
 
 wget -P /usr/src/davinci/config/ https://raw.githubusercontent.com/hanxianzhai/davinci-docker-rancher/master/datasource_driver.yml
 
