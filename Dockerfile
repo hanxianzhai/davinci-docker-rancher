@@ -1,37 +1,40 @@
 FROM java:8-jre
 
-LABEL MAINTAINER="hanxianzhai@163.com"
+LABEL MAINTAINER="edp_support@groups.163.com"
 
 RUN cd / \
-	&& mkdir -p /usr/src/davinci \
-	&& wget https://github.com/hanxianzhai/davinci-bin/releases/download/beta.7/davinci-bin.zip \
-	&& unzip davinci-bin.zip -d /usr/src/davinci \
-	&& rm -rf davinci-bin.zip \
-	&& cp /usr/src/davinci/bin/start-server.sh /usr/local/bin/
+	&& mkdir -p /opt/davinci \
+	&& wget https://github.com/edp963/davinci/releases/download/v0.3.0-beta.8/davinci-assembly_3.0.1-0.3.1-SNAPSHOT-dist-beta.8.zip \
+	&& unzip davinci-assembly_3.0.1-0.3.1-SNAPSHOT-dist-beta.8.zip -d /opt/davinci\
+	&& rm -rf davinci-assembly_3.0.1-0.3.1-SNAPSHOT-dist-beta.8.zip \
+	&& cp -v /opt/davinci/config/application.yml.example /opt/davinci/config/application.yml
 
 RUN mkdir -p /opt/phantomjs-2.1.1 \
     && wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 \
-	&& tar -xvjpf phantomjs-2.1.1-linux-x86_64.tar.bz2 \
+	&& unzip phantomjs-2.1.1-linux-x86_64.tar.bz2 \
 	&& rm -rf phantomjs-2.1.1-linux-x86_64.tar.bz2 \
 	&& mv phantomjs-2.1.1-linux-x86_64/bin/phantomjs /opt/phantomjs-2.1.1/phantomjs \
 	&& rm -rf phantomjs-2.1.1-linux-x86_64
 
 
-ADD config/application.yml /usr/src/davinci/config/application.yml
+
 #ADD config/datasource_driver.yml /usr/src/davinci/config/datasource_driver.yml
-COPY bin/start.sh /usr/local/bin/
-COPY bin/start.sh /usr/local/bin/
 COPY lib/oracle-11g/* /usr/src/davinci/lib/
 COPY lib/sqlserver/sqljdbc_6.0/chs/jre8/* /usr/src/davinci/lib/
 COPY lib/sqlserver/sqljdbc_7.4/chs/mssql-jdbc-* /usr/src/davinci/lib/
 
-RUN chmod +x /opt/phantomjs-2.1.1/phantomjs &&  chmod +x /usr/local/bin/start-server.sh && chmod +x /usr/local/bin/start.sh
+ADD bin/docker-entrypoint.sh /opt/davinci/bin/docker-entrypoint.sh
+
+
+RUN chmod +x /opt/davinci/bin/docker-entrypoint.sh \
+&&  chmod +x /opt/phantomjs-2.1.1/phantomjs
+
 
 ENV DAVINCI3_HOME /opt/davinci
 ENV PHANTOMJS_HOME /opt/phantomjs-2.1.1
 
 WORKDIR /opt/davinci
 
-EXPOSE 8080
+CMD ["./bin/start-server.sh"]
 
-CMD ["start-server.sh"]
+EXPOSE 8080
