@@ -2,13 +2,6 @@
 
 
 
-if [ ! -d "/opt/davinci" ]; then
-    cp -a /usr/src/davinci /opt/
-else 
-    rm -rf /opt/davinci/*
-    cp -a /usr/src/davinci/* /opt/davinci/
-fi
-
 wget -P /opt/davinci/config/ https://raw.githubusercontent.com/hanxianzhai/davinci-docker-rancher/master/datasource_driver.yml
 
 if [ -d "/initdb" ]; then
