@@ -17,8 +17,8 @@
 
 server:
   protocol: http
-  address: 127.0.0.1
-  port: 80
+  address: ${HOST_DAVINCI:0.0.0.0}
+  port: 8080
 
   servlet:
     context-path: /
@@ -28,7 +28,9 @@ server:
   # access:
   #  address:
   #  port:
-
+  access:
+    address: ${REAL_URL:0.0.0.0}
+    port: ${REAL_PORT:80}
 
 ## jwt is one of the important configuration of the application
 ## jwt config cannot be null or empty
@@ -60,9 +62,9 @@ spring:
 
   ## davinci datasouce config
   datasource:
-    url: jdbc:mysql://localhost:3306/davinci0.3?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
-    username: root
-    password: root
+    url: ${MYSQL_CONN}
+    username: ${DB_USER}
+    password: ${DB_PWD}
     driver-class-name: com.mysql.jdbc.Driver
     initial-size: 2
     min-idle: 1
@@ -72,11 +74,11 @@ spring:
   ## redis config
   ## please choose either of the two ways
   redis:
-    isEnable: false
+    isEnable: ${REDIS_READY:false}
 
   ## standalone config
-    host: 127.0.0.1
-    port: 6379
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
 
   ## cluster config
   #  cluster:
@@ -96,23 +98,22 @@ spring:
   ## mail config cannot be null or empty
   ## some mailboxes need to be set separately password for the SMTP service)
   mail:
-    host:
-    port:
-    username:
-    fromAddress:
-    password:
-    nickname:
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
+    username: ${MAIL_USER}
+    password: ${MAIL_PWD}
+    nickname: ${MAIL_NICKNAME}
 
     properties:
       smtp:
         starttls:
-          enable: true
-          required: true
-        auth: true
+          enable: ${SMTP_TLS:true}
+          required: ${SMTP_TLS_REQUIRED:true}
+        auth: ${SMTP_AUTH:true}
       mail:
         smtp:
           ssl:
-            enable: false
+            enable: ${MAIL_STMP_SSL:false}
 
   ldap:
     urls:
@@ -124,7 +125,7 @@ spring:
 screenshot:
   default_browser: PHANTOMJS                    # PHANTOMJS or CHROME
   timeout_second: 600
-  phantomjs_path: $your_phantomjs_path$
+  phantomjs_path: ${your_phantomjs_path:/opt/phantomjs-2.1.1}
   chromedriver_path: $your_chromedriver_path$
 
 data-auth-center:
