@@ -37,4 +37,4 @@ WORKDIR /opt/davinci
 
 CMD ["./bin/start-server.sh"]
 
-EXPOSE 8080
+EXPOSE 80
