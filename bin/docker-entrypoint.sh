@@ -2,6 +2,7 @@
 
 
 
+rm -rf /opt/davinci/config/datasource_driver.yml
 wget -P /opt/davinci/config/ https://raw.githubusercontent.com/hanxianzhai/davinci-docker-rancher/master/datasource_driver.yml
 
 if [ -d "/initdb" ]; then
