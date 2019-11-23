@@ -15,8 +15,9 @@ RUN mkdir -p /opt/phantomjs-2.1.1 \
 	&& mv phantomjs-2.1.1-linux-x86_64/bin/phantomjs /opt/phantomjs-2.1.1/phantomjs \
 	&& rm -rf phantomjs-2.1.1-linux-x86_64
 RUN wget -P /opt/ https://cdn.mysql.com//Downloads/Connector-J/mysql-connector-java-8.0.18.zip \
-    && unzip mysql-connector-java-8.0.18.zip \
-	&& mv mysql-connector-java-8.0.18/mysql-connector-java-8.0.18.zip /opt/davinci/lib/ 
+    && unzip /opt/mysql-connector-java-8.0.18.zip \
+	&& mv /opt/mysql-connector-java-8.0.18/mysql-connector-java-8.0.18.zip /opt/davinci/lib/ \
+	&& rm -rf /opt/mysql-connector-java-8.0.18*
    
 
 #ADD config/datasource_driver.yml /usr/src/davinci/config/datasource_driver.yml
