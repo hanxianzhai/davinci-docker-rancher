@@ -44,15 +44,15 @@
 
 ## Configuration is as follows:
 
-#mysql:
-#  name: mysql
-#  desc: mysql
-#  version:
-#  driver: com.mysql.jdbc.Driver
-#  keyword_prefix: \`
-#  keyword_suffix: \`
-#  alias_prefix: \'
-#  alias_suffix: \'
+mysql:
+  name: mysql
+  desc: mysql
+  version:
+  driver: com.mysql.jdbc.Driver
+  keyword_prefix: \`
+  keyword_suffix: \`
+  alias_prefix: \'
+  alias_suffix: \'
 
 oracle:
   name: oracle
